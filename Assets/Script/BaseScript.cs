@@ -5,7 +5,7 @@ namespace Script
     public class BaseScript : MonoBehaviour
     {
         private const float Smooth = 5.0f;
-        private const float TiltAngle = 15.0f;
+        private const float TiltAngle = 5.0f;
         
         void Update()
         {
