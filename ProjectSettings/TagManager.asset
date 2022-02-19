@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Marble1
   - Hole
+  - EndBase1
+  - EndBase2
+  - Marble2
   layers:
   - Default
   - TransparentFX
