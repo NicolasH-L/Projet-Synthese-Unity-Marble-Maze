@@ -1,13 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class SpinningDivider : MonoBehaviour
+namespace Script
 {
-    private const int RotationSpeed = 100;
-
-    void Update()
+    public class SpinningDivider : MonoBehaviour
     {
-        transform.Rotate(0, RotationSpeed * Time.deltaTime, 0);
+        private const int RotationSpeed = 100;
+
+        void Update()
+        {
+            transform.Rotate(0, RotationSpeed * Time.deltaTime, 0);
+        }
     }
 }
