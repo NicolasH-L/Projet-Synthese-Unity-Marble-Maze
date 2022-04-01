@@ -9,6 +9,8 @@ TagManager:
   - EndBase1
   - EndBase2
   - Marble2
+  - GameManager
+  - CanvasPlayer1
   layers:
   - Default
   - TransparentFX
