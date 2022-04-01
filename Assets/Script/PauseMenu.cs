@@ -5,10 +5,9 @@ namespace Script
 {
     public class PauseMenu : MonoBehaviour
     {
-        private const string GameManagerName = "Game Manager";
         private const string WelcomeScreen = "WelcomeScreen";
         [SerializeField] private GameObject pauseMenuUI;
-        private bool _gameIsPaused = false;
+        private bool _gameIsPaused;
 
         void Update()
         {
@@ -36,7 +35,6 @@ namespace Script
         public void LoadMenu()
         {
             Time.timeScale = 1f;
-            // Destroy(GameObject.Find(GameManagerName));
             SceneManager.LoadScene(WelcomeScreen);
         }
     }

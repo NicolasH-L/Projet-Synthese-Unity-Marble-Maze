@@ -1,28 +1,87 @@
+using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-namespace Script
+public class GameManager : MonoBehaviour
 {
-    public class GameManager : MonoBehaviour
+    private static GameManager _gameManager;
+    public static GameManager GameManagerInstance => _gameManager;
+
+    private const string WelcomeScreen = "WelcomeScreen";
+    private const string WinScene1 = "WinP1Screen";
+    private const string WinScene2 = "WinP2Screen";
+    private const string Player1 = "Marble1";
+    private const string Player2 = "Marble2";
+
+    private AudioSource _audioSource;
+    // private float sliderValue;
+
+    private void Awake()
     {
-        public static GameManager GameManagerInstance;
-        [SerializeField] private GameObject EndZone1;
-        [SerializeField] private GameObject EndZone2;
+        if (_gameManager != null && _gameManager != this)
+            Destroy(gameObject);
+        else
+            _gameManager = this;
+    }
 
-        private void Awake()
+    void Start()
+    {
+        // sliderValue = 0.5f;
+        _audioSource = GetComponent<AudioSource>();
+        _audioSource.Play();
+        DontDestroyOnLoad(this);
+    }
+
+    // public void Volume()
+    // {
+    //     sliderValue = GUI.HorizontalSlider(new Rect(25, 25, 200, 60), sliderValue, 0.0F, 1.0F);
+    //     _audioSource.volume = sliderValue;
+    // }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
+    {
+        if (SceneManager.GetActiveScene().buildIndex <= 1) return;
+        Destroy(gameObject);
+        Destroy(this);
+    }
+
+    public void CompleteGame(string player)
+    {
+        if (player == Player1)
         {
-            if (GameManagerInstance != null && GameManagerInstance != this)
-                Destroy(gameObject);
-            else
-                GameManagerInstance = this;
+            Debug.Log("p1");
+            SceneManager.LoadScene(WinScene1);
         }
 
-        void Start()
+        if (player == Player2)
         {
+            SceneManager.LoadScene(WinScene2);
+            Debug.Log("player 2");
         }
+    }
 
-        void Update()
-        {
-        }
-    
+    public void Replay()
+    {
+        SceneManager.LoadScene(WelcomeScreen);
+    }
+
+    public void PlayGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }
