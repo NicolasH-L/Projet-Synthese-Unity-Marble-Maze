@@ -843,7 +843,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 406033147}
         m_TargetAssemblyTypeName: Script.EndingManager, Assembly-CSharp
         m_MethodName: MainMenu
         m_Mode: 1

@@ -11,6 +11,8 @@ TagManager:
   - Marble2
   - GameManager
   - CanvasPlayer1
+  - TimerP1
+  - TimerP2
   layers:
   - Default
   - TransparentFX
