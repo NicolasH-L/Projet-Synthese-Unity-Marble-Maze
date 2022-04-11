@@ -9,11 +9,14 @@ public class GameManager : MonoBehaviour
 
     private const string WelcomeScreen = "WelcomeScreen";
     private const string WinScene1 = "WinP1Screen";
-    private const string WinScene2 = "WinP2Screen";
     private const string Player1 = "Marble1";
     private const string Player2 = "Marble2";
 
     private AudioSource _audioSource;
+
+    public bool _isP1Screen;
+
+    public bool _isP2Screen;
     // private float sliderValue;
 
     private void Awake()
@@ -26,6 +29,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        _isP1Screen = false;
+        _isP2Screen = false;
         // sliderValue = 0.5f;
         _audioSource = GetComponent<AudioSource>();
         _audioSource.Play();
@@ -60,12 +65,14 @@ public class GameManager : MonoBehaviour
         if (player == Player1)
         {
             Debug.Log("p1");
+            _isP1Screen = true;
             SceneManager.LoadScene(WinScene1);
         }
 
         if (player == Player2)
         {
-            SceneManager.LoadScene(WinScene2);
+            _isP2Screen = true;
+            SceneManager.LoadScene(WinScene1);
             Debug.Log("player 2");
         }
     }
