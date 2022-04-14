@@ -16,7 +16,7 @@ namespace Script
         private float _currentTime;
         private float _currentTime2;
         public static string time;
-        public string time2;
+        public static string time2;
 
         private void Start()
         {
@@ -25,11 +25,20 @@ namespace Script
 
         void Update()
         {
-            _currentTime = _currentTime += Time.deltaTime;
-            _currentTime2 = _currentTime2 += Time.deltaTime;
-            timerText.text = _currentTime.ToString("0.00");
-            timerText2.text = _currentTime2.ToString("0.00");
+            if (GameManager.GameManagerInstance.CheckTime() == false)
+            {
+                _currentTime = _currentTime += Time.deltaTime;
+                timerText.text = _currentTime.ToString("0.00");
+            }
+
             time = timerText.text;
+
+            if (GameManager.GameManagerInstance.CheckTime2() == false)
+            {
+                _currentTime2 = _currentTime2 += Time.deltaTime;
+                timerText2.text = _currentTime2.ToString("0.00");
+            }
+
             time2 = timerText2.text;
         }
 

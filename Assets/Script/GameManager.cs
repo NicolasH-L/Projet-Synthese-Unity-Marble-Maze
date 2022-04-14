@@ -8,15 +8,17 @@ public class GameManager : MonoBehaviour
     public static GameManager GameManagerInstance => _gameManager;
 
     private const string WelcomeScreen = "WelcomeScreen";
-    private const string WinScene1 = "WinP1Screen";
+    private const string WinScene = "WinScreen";
     private const string Player1 = "Marble1";
     private const string Player2 = "Marble2";
 
     private AudioSource _audioSource;
 
-    public bool _isP1Screen;
+    private bool _player1Finished;
+    private bool _player2Finished;
+    private bool _isTimer1Done;
+    private bool _isTimer2Done;
 
-    public bool _isP2Screen;
     // private float sliderValue;
 
     private void Awake()
@@ -29,12 +31,27 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        _isP1Screen = false;
-        _isP2Screen = false;
+        _player1Finished = false;
+        _player2Finished = false;
+        _isTimer1Done = false;
         // sliderValue = 0.5f;
         _audioSource = GetComponent<AudioSource>();
         _audioSource.Play();
         DontDestroyOnLoad(this);
+    }
+
+    private void Update()
+    {
+        if (_player1Finished && _player2Finished)
+        {
+            SceneManager.LoadScene(WinScene);
+        }
+
+        if (_player1Finished)
+            _isTimer1Done = true;
+
+        if (_player2Finished)
+            _isTimer2Done = true;
     }
 
     // public void Volume()
@@ -63,18 +80,20 @@ public class GameManager : MonoBehaviour
     public void CompleteGame(string player)
     {
         if (player == Player1)
-        {
-            Debug.Log("p1");
-            _isP1Screen = true;
-            SceneManager.LoadScene(WinScene1);
-        }
+            _player1Finished = true;
 
         if (player == Player2)
-        {
-            _isP2Screen = true;
-            SceneManager.LoadScene(WinScene1);
-            Debug.Log("player 2");
-        }
+            _player2Finished = true;
+    }
+
+    public bool CheckTime()
+    {
+        return _isTimer1Done;
+    }
+
+    public bool CheckTime2()
+    {
+        return _isTimer2Done;
     }
 
     public void Replay()
