@@ -13,6 +13,7 @@ TagManager:
   - CanvasPlayer1
   - TimerP1
   - TimerP2
+  - TimeManager
   layers:
   - Default
   - TransparentFX
