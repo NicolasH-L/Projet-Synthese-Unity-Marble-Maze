@@ -13,8 +13,8 @@ namespace Script
 
         private void Start()
         {
-            resultTime.text = TimerManager.time;
-            resultTime2.text = TimerManager.time2;
+            resultTime.text = TimerManager.Time1;
+            resultTime2.text = TimerManager.Time2;
         }
 
         public void MainMenu()

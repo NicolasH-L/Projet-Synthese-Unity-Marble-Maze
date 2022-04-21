@@ -35,6 +35,8 @@ namespace Script
         public void LoadMenu()
         {
             Time.timeScale = 1f;
+            Destroy(GameObject.FindWithTag("TimeManager"));
+            Destroy(GameObject.FindWithTag("GameManager"));
             SceneManager.LoadScene(WelcomeScreen);
         }
     }

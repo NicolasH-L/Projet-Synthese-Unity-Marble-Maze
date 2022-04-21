@@ -15,8 +15,8 @@ namespace Script
         [SerializeField] private TextMeshProUGUI timerText2;
         private float _currentTime;
         private float _currentTime2;
-        public static string time;
-        public static string time2;
+        public static string Time1;
+        public static string Time2;
 
         private void Start()
         {
@@ -31,15 +31,14 @@ namespace Script
                 timerText.text = _currentTime.ToString("0.00");
             }
 
-            time = timerText.text;
-
             if (GameManager.GameManagerInstance.CheckTime2() == false)
             {
                 _currentTime2 = _currentTime2 += Time.deltaTime;
                 timerText2.text = _currentTime2.ToString("0.00");
             }
 
-            time2 = timerText2.text;
+            Time1 = timerText.text;
+            Time2 = timerText2.text;
         }
 
         private void OnEnable()
@@ -54,7 +53,7 @@ namespace Script
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
         {
-            if (SceneManager.GetActiveScene().buildIndex <= 2) return;
+            if (SceneManager.GetActiveScene().buildIndex <= 1) return;
             Destroy(gameObject);
             Destroy(this);
         }

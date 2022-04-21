@@ -7,13 +7,11 @@ public class GameManager : MonoBehaviour
     private static GameManager _gameManager;
     public static GameManager GameManagerInstance => _gameManager;
 
-    private const string WelcomeScreen = "WelcomeScreen";
     private const string WinScene = "WinScreen";
     private const string Player1 = "Marble1";
     private const string Player2 = "Marble2";
 
     private AudioSource _audioSource;
-
     private bool _player1Finished;
     private bool _player2Finished;
     private bool _isTimer1Done;
@@ -44,12 +42,12 @@ public class GameManager : MonoBehaviour
     {
         if (_player1Finished && _player2Finished)
         {
+            _audioSource.Stop();
             SceneManager.LoadScene(WinScene);
         }
 
         if (_player1Finished)
             _isTimer1Done = true;
-
         if (_player2Finished)
             _isTimer2Done = true;
     }
@@ -73,6 +71,7 @@ public class GameManager : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
     {
         if (SceneManager.GetActiveScene().buildIndex <= 1) return;
+        _audioSource.Stop();
         Destroy(gameObject);
         Destroy(this);
     }
@@ -94,11 +93,6 @@ public class GameManager : MonoBehaviour
     public bool CheckTime2()
     {
         return _isTimer2Done;
-    }
-
-    public void Replay()
-    {
-        SceneManager.LoadScene(WelcomeScreen);
     }
 
     public void PlayGame()
