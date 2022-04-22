@@ -1,14 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class SetVolume : MonoBehaviour
+namespace Script
 {
-    public AudioMixer mixer;
-
-    public void SetLevel(float sliderValue)
+    public class SetVolume : MonoBehaviour
     {
-        mixer.SetFloat("volume", Mathf.Log10(sliderValue) * 50);
+        [SerializeField] private AudioMixer mixer;
+        // private float sliderValue;
+        //
+        // private void Start()
+        // {
+        //     sliderValue = 0.5f;
+        // }
+
+        public void SetLevel(float sliderValue)
+        {
+            mixer.SetFloat("MusicVol", Mathf.Log10(sliderValue) * 50);
+        }
     }
 }

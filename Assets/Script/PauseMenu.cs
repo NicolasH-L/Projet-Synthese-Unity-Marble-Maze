@@ -6,10 +6,12 @@ namespace Script
     public class PauseMenu : MonoBehaviour
     {
         private const string WelcomeScreen = "WelcomeScreen";
+        private const string GameManager = "GameManager";
+        private const string TimeManager = "TimeManager";
         [SerializeField] private GameObject pauseMenuUI;
         private bool _gameIsPaused;
 
-        void Update()
+        private void Update()
         {
             if (!Input.GetKeyDown(KeyCode.Escape)) return;
             if (_gameIsPaused)
@@ -35,8 +37,8 @@ namespace Script
         public void LoadMenu()
         {
             Time.timeScale = 1f;
-            Destroy(GameObject.FindWithTag("TimeManager"));
-            Destroy(GameObject.FindWithTag("GameManager"));
+            Destroy(GameObject.FindWithTag(GameManager));
+            Destroy(GameObject.FindWithTag(TimeManager));
             SceneManager.LoadScene(WelcomeScreen);
         }
     }

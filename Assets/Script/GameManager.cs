@@ -10,14 +10,10 @@ public class GameManager : MonoBehaviour
     private const string WinScene = "WinScreen";
     private const string Player1 = "Marble1";
     private const string Player2 = "Marble2";
-
-    private AudioSource _audioSource;
     private bool _player1Finished;
     private bool _player2Finished;
     private bool _isTimer1Done;
     private bool _isTimer2Done;
-
-    // private float sliderValue;
 
     private void Awake()
     {
@@ -27,24 +23,18 @@ public class GameManager : MonoBehaviour
             _gameManager = this;
     }
 
-    void Start()
+    private void Start()
     {
         _player1Finished = false;
         _player2Finished = false;
         _isTimer1Done = false;
-        // sliderValue = 0.5f;
-        _audioSource = GetComponent<AudioSource>();
-        _audioSource.Play();
         DontDestroyOnLoad(this);
     }
 
     private void Update()
     {
         if (_player1Finished && _player2Finished)
-        {
-            _audioSource.Stop();
             SceneManager.LoadScene(WinScene);
-        }
 
         if (_player1Finished)
             _isTimer1Done = true;
@@ -71,7 +61,6 @@ public class GameManager : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
     {
         if (SceneManager.GetActiveScene().buildIndex <= 1) return;
-        _audioSource.Stop();
         Destroy(gameObject);
         Destroy(this);
     }
