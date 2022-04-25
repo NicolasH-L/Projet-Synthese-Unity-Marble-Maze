@@ -10,12 +10,12 @@ namespace Script
     {
         private static TimerManager _timerManager;
         public static TimerManager TimerManagerInstance => _timerManager;
-        private static string _time1;
-        private static string _time2;
         [SerializeField] private TextMeshProUGUI timerText;
         [SerializeField] private TextMeshProUGUI timerText2;
         private float _currentTime;
         private float _currentTime2;
+        private string _time1;
+        private string _time2;
 
         private void Start()
         {
@@ -40,12 +40,12 @@ namespace Script
             _time2 = timerText2.text;
         }
 
-        public static string Timer1Text()
+        public string Timer1Text()
         {
             return _time1;
         }
 
-        public static string Timer2Text()
+        public string Timer2Text()
         {
             return _time2;
         }
@@ -62,7 +62,7 @@ namespace Script
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
         {
-            if (SceneManager.GetActiveScene().buildIndex <= 1) return;
+            if (SceneManager.GetActiveScene().buildIndex >= 1) return;
             Destroy(gameObject);
             Destroy(this);
         }

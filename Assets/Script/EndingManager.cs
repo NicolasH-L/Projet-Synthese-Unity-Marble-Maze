@@ -11,11 +11,13 @@ namespace Script
         private const string TextSeconds = " seconds";
         [SerializeField] private TextMeshProUGUI resultTime;
         [SerializeField] private TextMeshProUGUI resultTime2;
+        private TimerManager _timerManager;
 
         private void Start()
         {
-            resultTime.text = TimerManager.Timer1Text() + TextSeconds;
-            resultTime2.text = TimerManager.Timer2Text() + TextSeconds;
+            _timerManager = GameObject.FindWithTag("TimeManager").GetComponent<TimerManager>();
+            resultTime.text = _timerManager.Timer1Text() + TextSeconds;
+            resultTime2.text = _timerManager.Timer2Text() + TextSeconds;
         }
 
         public void MainMenu()
