@@ -42,12 +42,6 @@ public class GameManager : MonoBehaviour
             _isTimer2Done = true;
     }
 
-    // public void Volume()
-    // {
-    //     sliderValue = GUI.HorizontalSlider(new Rect(25, 25, 200, 60), sliderValue, 0.0F, 1.0F);
-    //     _audioSource.volume = sliderValue;
-    // }
-
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
