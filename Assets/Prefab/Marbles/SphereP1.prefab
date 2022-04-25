@@ -125,3 +125,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d2749f8d3f22d42a977ddaf040d81d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  marblePrefab: {fileID: 3245499308264609023}
+  spawnPos: {fileID: 5402231117151197179, guid: 72d991c9ada60b14893ee3ee7391c3de, type: 3}
