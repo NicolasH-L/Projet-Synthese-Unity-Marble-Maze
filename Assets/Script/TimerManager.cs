@@ -1,5 +1,3 @@
-using System;
-using System.Timers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -14,8 +12,6 @@ namespace Script
         [SerializeField] private TextMeshProUGUI timerText2;
         private float _currentTime;
         private float _currentTime2;
-        private string _time1;
-        private string _time2;
 
         private void Start()
         {
@@ -23,6 +19,11 @@ namespace Script
         }
 
         void Update()
+        {
+            InitializeChronometer();
+        }
+
+        private void InitializeChronometer()
         {
             if (GameManager.GameManagerInstance.CheckTime() == false)
             {
@@ -35,19 +36,16 @@ namespace Script
                 _currentTime2 = _currentTime2 += Time.deltaTime;
                 timerText2.text = _currentTime2.ToString("0.00");
             }
-
-            _time1 = timerText.text;
-            _time2 = timerText2.text;
         }
 
-        public string Timer1Text()
+        public float GetTimer1()
         {
-            return _time1;
+            return _currentTime;
         }
 
-        public string Timer2Text()
+        public float GetTimer2()
         {
-            return _time2;
+            return _currentTime2;
         }
 
         private void OnEnable()

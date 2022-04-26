@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -14,6 +13,7 @@ public class GameManager : MonoBehaviour
     private bool _player2Finished;
     private bool _isTimer1Done;
     private bool _isTimer2Done;
+    private string _displayWinner;
 
     private void Awake()
     {
@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
         _player1Finished = false;
         _player2Finished = false;
         _isTimer1Done = false;
+        _isTimer2Done = false;
         DontDestroyOnLoad(this);
     }
 
@@ -35,9 +36,14 @@ public class GameManager : MonoBehaviour
     {
         if (_player1Finished && _player2Finished)
             SceneManager.LoadScene(WinScene);
+        CheckStatus();
+    }
 
+    private void CheckStatus()
+    {
         if (_player1Finished)
             _isTimer1Done = true;
+
         if (_player2Finished)
             _isTimer2Done = true;
     }
@@ -61,11 +67,21 @@ public class GameManager : MonoBehaviour
 
     public void CompleteGame(string player)
     {
-        if (player == Player1)
-            _player1Finished = true;
+        switch (player)
+        {
+            case Player1:
+                _player1Finished = true;
+                break;
+            case Player2:
+                _player2Finished = true;
+                break;
+        }
+    }
 
-        if (player == Player2)
-            _player2Finished = true;
+    public string ComparePlayerTime(float timePlayer1, float timePlayer2)
+    {
+        _displayWinner = timePlayer1 < timePlayer2 ? "Player 1 win!" : "Player 2 win!";
+        return _displayWinner;
     }
 
     public bool CheckTime()
