@@ -14,7 +14,7 @@ namespace Script
                 Quaternion.identity);
         }
 
-        void Update()
+        private void Update()
         {
             if (_currentMarble == null)
                 _currentMarble = Instantiate(marblePrefab,

@@ -6,8 +6,11 @@ namespace Script
 {
     public class TimerManager : MonoBehaviour
     {
-        private static TimerManager _timerManager;
-        public static TimerManager TimerManagerInstance => _timerManager;
+        public static TimerManager TimerManagerInstance { get; private set; }
+
+        private const int AddPenaltyTime = 5;
+        private const int DeductTime = 10;
+        private const string TimeFormat = "0.00";
         [SerializeField] private TextMeshProUGUI timerText;
         [SerializeField] private TextMeshProUGUI timerText2;
         private float _currentTime;
@@ -15,10 +18,11 @@ namespace Script
 
         private void Start()
         {
+            TimerManagerInstance = GetComponent<TimerManager>();
             DontDestroyOnLoad(this);
         }
 
-        void Update()
+        private void Update()
         {
             InitializeChronometer();
         }
@@ -28,14 +32,12 @@ namespace Script
             if (GameManager.GameManagerInstance.CheckTime() == false)
             {
                 _currentTime = _currentTime += Time.deltaTime;
-                timerText.text = _currentTime.ToString("0.00");
+                timerText.text = _currentTime.ToString(TimeFormat);
             }
 
-            if (GameManager.GameManagerInstance.CheckTime2() == false)
-            {
-                _currentTime2 = _currentTime2 += Time.deltaTime;
-                timerText2.text = _currentTime2.ToString("0.00");
-            }
+            if (GameManager.GameManagerInstance.CheckTime2()) return;
+            _currentTime2 = _currentTime2 += Time.deltaTime;
+            timerText2.text = _currentTime2.ToString(TimeFormat);
         }
 
         public float GetTimer1()
@@ -46,6 +48,26 @@ namespace Script
         public float GetTimer2()
         {
             return _currentTime2;
+        }
+
+        public void PenaltyTimePlayer1()
+        {
+            _currentTime += AddPenaltyTime;
+        }
+
+        public void PenaltyTimePlayer2()
+        {
+            _currentTime += AddPenaltyTime;
+        }
+
+        public void DeductTimePlayer1()
+        {
+            _currentTime -= DeductTime;
+        }
+
+        public void DeductTimePlayer2()
+        {
+            _currentTime -= DeductTime;
         }
 
         private void OnEnable()

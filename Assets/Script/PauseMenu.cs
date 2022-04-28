@@ -20,21 +20,21 @@ namespace Script
                 Pause();
         }
 
-        public void Resume()
+        private void Resume()
         {
             pauseMenuUI.SetActive(false);
             Time.timeScale = 1f;
             _gameIsPaused = false;
         }
 
-        public void Pause()
+        private void Pause()
         {
             pauseMenuUI.SetActive(true);
             Time.timeScale = 0f;
             _gameIsPaused = true;
         }
 
-        public void LoadMenu()
+        private void LoadMenu()
         {
             Time.timeScale = 1f;
             Destroy(GameObject.FindWithTag(GameManager));

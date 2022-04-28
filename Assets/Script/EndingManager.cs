@@ -8,6 +8,7 @@ namespace Script
     {
         private const string WelcomeScreen = "WelcomeScreen";
         private const string TextSeconds = " seconds";
+        private const string TimeFormat = "0.00";
         [SerializeField] private TextMeshProUGUI resultTime;
         [SerializeField] private TextMeshProUGUI resultTime2;
         [SerializeField] private TextMeshProUGUI winner;
@@ -17,14 +18,16 @@ namespace Script
         private void Start()
         {
             _gameManager = GameManager.GameManagerInstance;
-            _timerManager = GameObject.FindWithTag("TimeManager").GetComponent<TimerManager>();
-            resultTime.text = _timerManager.GetTimer1().ToString("0.00") + TextSeconds;
-            resultTime2.text = _timerManager.GetTimer2().ToString("0.00") + TextSeconds;
+            _timerManager = TimerManager.TimerManagerInstance;
+            resultTime.text = _timerManager.GetTimer1().ToString(TimeFormat) + TextSeconds;
+            resultTime2.text = _timerManager.GetTimer2().ToString(TimeFormat) + TextSeconds;
             winner.text = _gameManager.ComparePlayerTime(_timerManager.GetTimer1(), _timerManager.GetTimer2());
         }
 
-        public void MainMenu()
+        private void MainMenu()
         {
+            Destroy(_gameManager);
+            Destroy(_timerManager);
             SceneManager.LoadScene(WelcomeScreen);
         }
     }

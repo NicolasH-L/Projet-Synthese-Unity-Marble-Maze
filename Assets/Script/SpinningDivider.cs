@@ -6,7 +6,7 @@ namespace Script
     {
         private const int RotationSpeed = 100;
 
-        void Update()
+        private void Update()
         {
             transform.Rotate(0, RotationSpeed * Time.deltaTime, 0);
         }

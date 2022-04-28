@@ -3,10 +3,11 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    private static GameManager _gameManager;
-    public static GameManager GameManagerInstance => _gameManager;
+    public static GameManager GameManagerInstance { get; private set; }
 
-    private const string WinScene = "WinScreen";
+    private const string WinScene = "WinningScreen";
+    private const string Player1Win = "Player 1 win!";
+    private const string Player2Win = "Player 2 win!";
     private const string Player1 = "Marble1";
     private const string Player2 = "Marble2";
     private bool _player1Finished;
@@ -17,10 +18,10 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (_gameManager != null && _gameManager != this)
+        if (GameManagerInstance != null && GameManagerInstance != this)
             Destroy(gameObject);
         else
-            _gameManager = this;
+            GameManagerInstance = this;
     }
 
     private void Start()
@@ -80,7 +81,7 @@ public class GameManager : MonoBehaviour
 
     public string ComparePlayerTime(float timePlayer1, float timePlayer2)
     {
-        _displayWinner = timePlayer1 < timePlayer2 ? "Player 1 win!" : "Player 2 win!";
+        _displayWinner = timePlayer1 < timePlayer2 ? Player1Win : Player2Win;
         return _displayWinner;
     }
 
