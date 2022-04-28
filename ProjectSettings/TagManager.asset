@@ -15,6 +15,7 @@ TagManager:
   - TimerP2
   - TimeManager
   - AudioSource
+  - Capsule
   layers:
   - Default
   - TransparentFX
