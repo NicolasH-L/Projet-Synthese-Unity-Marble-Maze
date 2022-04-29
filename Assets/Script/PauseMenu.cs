@@ -20,13 +20,6 @@ namespace Script
                 Pause();
         }
 
-        private void Resume()
-        {
-            pauseMenuUI.SetActive(false);
-            Time.timeScale = 1f;
-            _gameIsPaused = false;
-        }
-
         private void Pause()
         {
             pauseMenuUI.SetActive(true);
@@ -34,7 +27,14 @@ namespace Script
             _gameIsPaused = true;
         }
 
-        private void LoadMenu()
+        public void Resume()
+        {
+            pauseMenuUI.SetActive(false);
+            Time.timeScale = 1f;
+            _gameIsPaused = false;
+        }
+
+        public void LoadMenu()
         {
             Time.timeScale = 1f;
             Destroy(GameObject.FindWithTag(GameManager));

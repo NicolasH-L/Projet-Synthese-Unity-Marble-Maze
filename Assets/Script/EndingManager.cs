@@ -24,10 +24,8 @@ namespace Script
             winner.text = _gameManager.ComparePlayerTime(_timerManager.GetTimer1(), _timerManager.GetTimer2());
         }
 
-        private void MainMenu()
+        public void MainMenu()
         {
-            Destroy(_gameManager);
-            Destroy(_timerManager);
             SceneManager.LoadScene(WelcomeScreen);
         }
     }

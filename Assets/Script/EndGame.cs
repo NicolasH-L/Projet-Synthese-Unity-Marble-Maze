@@ -15,10 +15,7 @@ namespace Script
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.CompareTag(Player1))
-                _gameManager.CompleteGame(Player1);
-            else if (other.gameObject.CompareTag(Player2))
-                _gameManager.CompleteGame(Player2);
+            _gameManager.CompleteGame(other.gameObject.CompareTag(Player1) ? Player1 : Player2);
         }
     }
 }

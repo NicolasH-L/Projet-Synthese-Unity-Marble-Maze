@@ -57,7 +57,7 @@ namespace Script
 
         public void PenaltyTimePlayer2()
         {
-            _currentTime += AddPenaltyTime;
+            _currentTime2 += AddPenaltyTime;
         }
 
         public void DeductTimePlayer1()
@@ -67,7 +67,7 @@ namespace Script
 
         public void DeductTimePlayer2()
         {
-            _currentTime -= DeductTime;
+            _currentTime2 -= DeductTime;
         }
 
         private void OnEnable()
