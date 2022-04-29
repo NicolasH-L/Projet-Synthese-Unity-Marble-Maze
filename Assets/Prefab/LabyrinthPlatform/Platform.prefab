@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6277921938551908710}
   m_Layer: 0
   m_Name: Platform
-  m_TagString: Platform
+  m_TagString: Platform1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -565,8 +565,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7408115041709752134, guid: 7d3b66643afa8b9469fe4598a81f0030, type: 3}
       propertyPath: m_Name
-      value: EndBase
+      value: EndZone
       objectReference: {fileID: 0}
+    - target: {fileID: 7408115041709752184, guid: 7d3b66643afa8b9469fe4598a81f0030, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 49b7eb351ae15344085bd911689f1309, type: 2}
     - target: {fileID: 7408115041709752186, guid: 7d3b66643afa8b9469fe4598a81f0030, type: 3}
       propertyPath: m_RootOrder
       value: 207
@@ -2564,7 +2568,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5402231117151197179, guid: 72d991c9ada60b14893ee3ee7391c3de, type: 3}
       propertyPath: m_Name
-      value: SpawnMarble (1)
+      value: SpawnTest
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72d991c9ada60b14893ee3ee7391c3de, type: 3}

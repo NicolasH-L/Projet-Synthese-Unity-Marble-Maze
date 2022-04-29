@@ -6,18 +6,17 @@ TagManager:
   tags:
   - Marble1
   - Hole
-  - EndBase1
-  - EndBase2
   - Marble2
   - GameManager
-  - CanvasPlayer1
   - TimerP1
   - TimerP2
   - TimeManager
   - AudioSource
   - Capsule
-  - Platform
   - Platform2
+  - EndZone1
+  - EndZone2
+  - Platform1
   layers:
   - Default
   - TransparentFX
