@@ -8,7 +8,7 @@ namespace Script
         private const string Vertical = "Vertical";
         private const string Horizontal2 = "Horizontal2";
         private const string Vertical2 = "Vertical2";
-        private const string Platform = "Platform";
+        private const string Platform = "Platform1";
         private const string Platform2 = "Platform2";
         private const float Smoothness = 5.0f;
         private const float TiltAngle = 5.0f;

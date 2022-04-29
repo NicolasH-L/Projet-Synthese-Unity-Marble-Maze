@@ -6,8 +6,8 @@ public class GameManager : MonoBehaviour
     public static GameManager GameManagerInstance { get; private set; }
 
     private const string WinScene = "WinningScreen";
-    private const string Player1Win = "Player 1 win!";
-    private const string Player2Win = "Player 2 win!";
+    private const string Player1Win = "Player 1 wins!";
+    private const string Player2Win = "Player 2 wins!";
     private const string Player1 = "Marble1";
     private const string Player2 = "Marble2";
     private bool _player1Finished;

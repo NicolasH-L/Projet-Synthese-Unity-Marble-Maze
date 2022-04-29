@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Script
 {
-    public class EndGame : MonoBehaviour
+    public class FinishLineScript : MonoBehaviour
     {
         private const string Player1 = "Marble1";
         private const string Player2 = "Marble2";
