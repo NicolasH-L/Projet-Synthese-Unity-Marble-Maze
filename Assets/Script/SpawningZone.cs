@@ -9,17 +9,17 @@ namespace Script
 
         private void Start()
         {
-            _currentMarble = Instantiate(marblePrefab,
-                new Vector3(transform.position.x, transform.position.y, transform.position.z),
+            var position = transform.position;
+            _currentMarble = Instantiate(marblePrefab, new Vector3(position.x, position.y, position.z),
                 Quaternion.identity);
         }
 
         private void Update()
         {
-            if (_currentMarble == null)
-                _currentMarble = Instantiate(marblePrefab,
-                    new Vector3(transform.position.x, transform.position.y, transform.position.z),
-                    Quaternion.identity);
+            if (_currentMarble != null) return;
+            var position = transform.position;
+            _currentMarble = Instantiate(marblePrefab, new Vector3(position.x, position.y, position.z),
+                Quaternion.identity);
         }
     }
 }
