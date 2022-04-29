@@ -19,9 +19,10 @@ namespace Script
         {
             _gameManager = GameManager.GameManagerInstance;
             _timerManager = TimerManager.TimerManagerInstance;
-            resultTime.text = _timerManager.GetTimer1().ToString(TimeFormat) + TextSeconds;
-            resultTime2.text = _timerManager.GetTimer2().ToString(TimeFormat) + TextSeconds;
-            winner.text = _gameManager.ComparePlayerTime(_timerManager.GetTimer1(), _timerManager.GetTimer2());
+            resultTime.text = _timerManager.GetPlayer1Time().ToString(TimeFormat) + TextSeconds;
+            resultTime2.text = _timerManager.GetPlayer2Time().ToString(TimeFormat) + TextSeconds;
+            winner.text =
+                _gameManager.ComparePlayerTime(_timerManager.GetPlayer1Time(), _timerManager.GetPlayer2Time());
         }
 
         public void MainMenu()

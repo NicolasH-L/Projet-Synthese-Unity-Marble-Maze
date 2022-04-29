@@ -40,12 +40,12 @@ namespace Script
             timerText2.text = _currentTime2.ToString(TimeFormat);
         }
 
-        public float GetTimer1()
+        public float GetPlayer1Time()
         {
             return _currentTime;
         }
 
-        public float GetTimer2()
+        public float GetPlayer2Time()
         {
             return _currentTime2;
         }
@@ -60,12 +60,12 @@ namespace Script
             _currentTime2 += AddPenaltyTime;
         }
 
-        public void DeductTimePlayer1()
+        public void DeductPlayer1Time()
         {
             _currentTime -= DeductTime;
         }
 
-        public void DeductTimePlayer2()
+        public void DeductPlayer2Time()
         {
             _currentTime2 -= DeductTime;
         }

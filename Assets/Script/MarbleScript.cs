@@ -30,19 +30,19 @@ namespace Script
                 _timerManager.PenaltyTimePlayer1();
                 Destroy(gameObject);
             }
-            else if (other.gameObject.CompareTag(HoleTag) && _marbleTag.Equals(Marble2Tag))
-            {
-                _timerManager.PenaltyTimePlayer2();
-                Destroy(gameObject);
-            }
+
+            if (!other.gameObject.CompareTag(HoleTag) || !_marbleTag.Equals(Marble2Tag)) return;
+            _timerManager.PenaltyTimePlayer2();
+            Destroy(gameObject);
         }
 
         private void IsMarbleTouchingCapsule(Component other)
         {
             if (other.gameObject.CompareTag(CapsuleTag) && _marbleTag.Equals(Marble1Tag))
-                _timerManager.DeductTimePlayer1();
-            else if (other.gameObject.CompareTag(CapsuleTag) && _marbleTag.Equals(Marble2Tag))
-                _timerManager.DeductTimePlayer2();
+                _timerManager.DeductPlayer1Time();
+
+            if (other.gameObject.CompareTag(CapsuleTag) && _marbleTag.Equals(Marble2Tag))
+                _timerManager.DeductPlayer2Time();
         }
     }
 }
