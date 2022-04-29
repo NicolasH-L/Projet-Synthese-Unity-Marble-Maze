@@ -16,6 +16,8 @@ TagManager:
   - TimeManager
   - AudioSource
   - Capsule
+  - Platform
+  - Platform2
   layers:
   - Default
   - TransparentFX
